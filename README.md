@@ -1,166 +1,77 @@
-# Neuromorphic-LIF-Simulation
+![Python](https://img.shields.io/badge/Python-3.x-blue)
 
-> **A Python implementation of the Leaky Integrate-and-Fire (LIF) neuron model for neuromorphic computing and spiking neural network research.**
+![NumPy](https://img.shields.io/badge/NumPy-Library-orange)
 
----
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-green)
 
-## Table of Contents
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-red)
 
-- [Overview](#overview)
-- [Objectives](#objectives)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Mathematical Model](#mathematical-model)
-- [Expected Results](#expected-results)
-- [Applications](#applications)
-- [Future Improvements](#future-improvements)
-- [License](#license)
-- [Author](#author)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
----
+# Neuromorphic VLSI Architecture using the Leaky Integrate-and-Fire (LIF) Neuron Model
 
-## Overview
+A Python-based implementation and analysis of the Leaky Integrate-and-Fire (LIF) neuron model for studying neuromorphic computing and spiking neural networks.
 
-The **Leaky Integrate-and-Fire (LIF)** neuron is one of the most widely used computational models in **Computational Neuroscience**, **Spiking Neural Networks (SNNs)**, and **Neuromorphic Computing**.
+## Project Overview
 
-This project demonstrates the behavior of a biological neuron by simulating how it:
+Neuromorphic computing aims to mimic the computational principles of the human brain using networks of artificial neurons.
 
-- Integrates input current
-- Leaks membrane potential over time
-- Generates spikes when a threshold is reached
-- Resets after firing
+This project implements the **Leaky Integrate-and-Fire (LIF)** neuron model in Python. The notebook demonstrates:
 
-The implementation is written in **Python** using **NumPy** and **Matplotlib**. It is designed to help students and enthusiasts understand the behavior of the LIF neuron model through simulation and visualization.
-
----
-
-## Objectives
-
-- Simulate the membrane potential dynamics of an LIF neuron.
-- Visualize neuron firing behavior.
-- Generate spike trains.
-- Study the influence of input current on neuron activity.
-- Provide an educational implementation of the LIF neuron model.
-- Build a foundation for future Spiking Neural Network projects.
-
----
-
-## Features
-
-- Leaky Integrate-and-Fire neuron simulation
-- Python implementation
+- Mathematical modelling of a biological neuron
+- Numerical simulation using the Forward Euler method
+- Spike generation through threshold detection
 - Membrane potential visualization
-- Spike train generation
-- Adjustable neuron parameters
-- Firing rate analysis
-- Well-documented notebook
-- Google Colab compatible
-- Modular project structure
+- Spike train visualization
+- Analysis of firing rate with varying input current
 
----
+The project serves as an introduction to neuromorphic engineering and provides a foundation for future FPGA or ASIC implementations.
 
-## Technologies Used
-
-| Technology | Purpose |
-|------------|---------|
-| Python 3 | Programming language |
-| NumPy | Numerical computation |
-| Matplotlib | Plotting and visualization |
-| Jupyter Notebook | Interactive simulation |
-| Git | Version control |
-| GitHub | Repository hosting |
-
----
-
-## Project Structure
+## Repository Structure
 
 ```text
 Neuromorphic-LIF-Simulation/
 │
-├── docs/                     # Documentation
-├── examples/                 # Example programs
-├── images/                   # README images and diagrams
-├── notebooks/                # Jupyter notebooks
+├── notebooks/
 │   └── lif_simulation.ipynb
-├── results/                  # Generated simulation figures
-├── src/                      # Python source files
-├── tests/                    # Test scripts
 │
-├── README.md
+├── results/
+│   ├── lif_membrane_potential.png
+│   └── firing_rate_vs_current.png
+│
+├── docs/
+│
 ├── requirements.txt
+│
 ├── LICENSE
-└── .gitignore
+│
+└── README.md
 ```
 
----
+## Features
 
-## Prerequisites
-
-Before running this project, install:
-
-- Python 3.10 or later
-- Git
-- Jupyter Notebook or JupyterLab
-
-Verify your Python installation:
-
-```bash
-python --version
-```
-
----
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone https://github.com/akshajsaigandi-ux/Neuromorphic-LIF-Simulation.git
-```
-
-Navigate to the project directory:
-
-```bash
-cd Neuromorphic-LIF-Simulation
-```
-
-Install the required Python libraries:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Usage
-
-1. Open `notebooks/lif_simulation.ipynb`.
-2. Run all notebook cells sequentially.
-3. Observe the membrane potential plot.
-4. Observe spike generation.
-5. Modify neuron parameters and input current to study different firing behaviors.
-
----
+- Leaky Integrate-and-Fire neuron implementation
+- Forward Euler numerical simulation
+- Membrane potential visualization
+- Spike train visualization
+- Input current parameter sweep
+- Firing rate analysis
+- Jupyter Notebook implementation
 
 ## Mathematical Model
 
-The membrane potential evolves according to the discrete-time LIF equation:
+The membrane potential follows the differential equation:
 
 ```text
-V(t + Δt) = V(t) + (Δt / τ) [-(V(t) - Vrest) + R · I(t)]
+τ(dV/dt) = -(V − Vrest) + RI
 ```
 
-where:
+where
 
-- **V** = Membrane potential
-- **τ** = Membrane time constant
-- **R** = Membrane resistance
-- **I** = Input current
-- **Vrest** = Resting membrane potential
+- **V** : Membrane potential
+- **τ** : Membrane time constant
+- **R** : Membrane resistance
+- **I** : Injected current
 
 Whenever
 
@@ -168,56 +79,97 @@ Whenever
 V ≥ Vthreshold
 ```
 
-the neuron generates a spike and the membrane potential is reset to **Vreset**.
+the neuron generates a spike and immediately resets to
+
+```text
+V = Vreset
+```
+
+## Future Work
+
+Possible extensions of this project include:
+
+- Adaptive Leaky Integrate-and-Fire (ALIF) neurons
+- Multi-neuron Spiking Neural Networks (SNNs)
+- Synaptic plasticity using Spike-Timing-Dependent Plasticity (STDP)
+- FPGA implementation using Verilog
+- ASIC implementation for neuromorphic processors
+- Integration with machine learning frameworks
+
+## Technologies Used
+
+- Python 3
+- NumPy
+- Matplotlib
+- Jupyter Notebook
+- Git
+- GitHub
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/akshajsaigandi-ux/Neuromorphic-LIF-Simulation.git
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Launch Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+## Usage
+
+Open
+
+```text
+notebooks/lif_simulation.ipynb
+```
+
+Run all notebook cells.
+
+The notebook will
+
+- simulate the neuron
+- generate spikes
+- plot membrane potential
+- plot spike train
+- perform parameter analysis
+
+## References
+
+1. Wulfram Gerstner and Werner M. Kistler, *Spiking Neuron Models*.
+
+2. Wolfgang Maass, *Networks of Spiking Neurons*.
+
+3. C. Mead, *Neuromorphic Electronic Systems*, Proceedings of the IEEE.
+
+4. Eugene M. Izhikevich, *Dynamical Systems in Neuroscience*.
+
+## Results
+
+### Membrane Potential
+
+The membrane potential increases gradually until it reaches the firing threshold. Once the threshold is exceeded, the neuron emits a spike and the membrane potential resets to the resting potential.
+
+<p align="center">
+<img src="results/lif_membrane_potential.png" width="850">
+</p>
 
 ---
 
-## Expected Results
+### Input Current vs Firing Rate
 
-Running the notebook will generate:
+The firing rate increases with increasing input current, demonstrating the characteristic response of the Leaky Integrate-and-Fire neuron.
 
-- Membrane potential vs. time
-- Spike train
-- Neuron firing behavior
-- Response under different input currents
+<p align="center">
+<img src="results/firing_rate_vs_current.png" width="700">
+</p>
 
-> Simulation figures will be included after the implementation is completed.
-
----
-
-## Applications
-
-- Neuromorphic Computing
-- Spiking Neural Networks (SNNs)
-- Computational Neuroscience
-- Brain-inspired Artificial Intelligence
-- Academic teaching and demonstrations
-- Neuromorphic hardware research
-
----
-
-## Future Improvements
-
-- Multiple interconnected neurons
-- Adaptive LIF neuron model
-- Implement the Izhikevich neuron model
-- Implement the Hodgkin–Huxley neuron model
-- Small Spiking Neural Network implementation
-
----
-
-
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-## Author
-
-**Akshaj Gandi**
-
-B.Tech – Electronics and Communication Engineering
-
-GitHub: [akshajsaigandi-ux](https://github.com/akshajsaigandi-ux)
